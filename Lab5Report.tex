@@ -1,0 +1,347 @@
+\documentclass{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+
+\title{\textbf{React Native Development Tasks}}
+\author{Sai Kumar Reddy Kaluvakolu}
+\date{ID: 001258100 \\ Repo Link: \href{https://github.com/sai-gif/Todo}{https://github.com/sai-gif/Todo}}
+
+\begin{document}
+
+\maketitle
+
+\section*{Task 1}
+
+\subsection*{Q1.1 : Attach screenshots of your app running on an emulator and on a physical Android
+ or iOS device.}
+
+ \textbf{A:}
+    \begin{itemize}
+        \item All the images have been uploaded at the end of the document
+    \end{itemize}
+
+
+
+
+
+\subsection*{Q1.2: Describe any differences you observed between running the app on an emulator versus a physical device.}
+\textbf{A:}
+\begin{itemize}
+    \item \textbf{Emulator:}
+    \begin{itemize}
+        \item Setup takes a lot of time and requires significant computational resources.
+        \item Allows testing multiple devices.
+    \end{itemize}
+    \item \textbf{Physical Device:}
+    \begin{itemize}
+        \item Real-world performance testing.
+        \item Limited to one device at a time.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Q2.1: Explain the steps you followed to set up an emulator in Android Studio or Xcode.}
+\textbf{A:}
+\begin{enumerate}
+    \item Installed Java and set the system path.
+    \item Installed android studio and setup sdk 
+    \item Used Android Studio’s AVD Manager to create an emulator.
+    \item Created a new React Native project:
+    \begin{itemize}
+        \item Attempted \texttt{npm install -g react-native-cli} (deprecated and did not work).
+        \item Used updated steps from the React Native documentation:
+        \begin{verbatim}
+        npx @react-native-community/cli@latest init todoapp
+        \end{verbatim}
+    \end{itemize}
+    \item Configured Android environment variables such as \texttt{ANDROID\_HOME} along with other env involved.
+    \item Resolved Gradle issues with the following commands:
+    \begin{verbatim}
+    ./gradlew clean
+    ./gradlew assembleDebug --info
+    npx react-native start --reset-cache
+    \end{verbatim}
+    \item Ran the application with npm run android
+\end{enumerate}
+
+\subsection*{Q2.2: Discuss any challenges you faced during the setup and how you overcame them.}
+\textbf{A:}
+\begin{itemize}
+    \item \textbf{Challenges:}
+    \begin{itemize}
+        \item \texttt{react-native-cli} was deprecated, and the professor's commands did not work.
+        \item Missing Android environment variables caused \texttt{npm run android} to fail.
+        \item The emulator did not launch automatically and threw errors.
+    \end{itemize}
+    \item \textbf{Resolutions:}
+    \begin{itemize}
+        \item Used updated CLI commands from React Native documentation.
+        \item Set environment variables (\texttt{ANDROID\_HOME}, \texttt{PATH}) using tutorials.
+        \item Manually launched the emulator and cleared Gradle caches.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Q3.1: Describe how you connected your physical device to run the app using Expo.}
+\textbf{A:}
+\begin{itemize}
+    \item Installed the Expo app from the Play Store.
+    \item ran react native application using expo Framework 
+    \item Scanned the QR code provided in the terminal after running the app.
+    \item Followed the Expo tutorial for a seamless setup without issues: 
+    \item https://docs.expo.dev/tutorial/create-your-first-app/
+    \href{https://docs.expo.dev/tutorial/create-your-first-app/}{click}.
+\end{itemize}
+
+\subsection*{Q3.2: Include any troubleshooting steps if you encountered issues. }
+\textbf{A:}
+\begin{itemize}
+    \item Fortunately, everything was smooth when setting up the app on Expo.
+\end{itemize}
+
+\subsection*{Q4.1 and 4.2: Compare and contrast using an emulator versus a physical device for React Native development.}
+\textbf{A:}
+\begin{itemize}
+    \item Set up takes a lot of time on an emulator and requires significant computational resources. Using an emulator, we can test multiple devices, whereas physical devices are limited to one.
+    \item \textbf{Emulator:}
+    \begin{itemize}
+        \item \textbf{Advantages:} Cost-effective, supports multiple devices, built-in debugging tools.
+        \item \textbf{Disadvantages:} Slower performance, limited hardware testing, less accurate representation.
+    \end{itemize}
+    \item \textbf{Physical Device:}
+    \begin{itemize}
+        \item \textbf{Advantages:} Real-world performance testing, accurate hardware, and sensor usage.
+        \item \textbf{Disadvantages:} Requires physical devices, less convenient for testing multiple OS versions.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection*{Q 5: Identify a common error you encountered when starting your React Native app. Explain the cause of the error and the steps you took to resolve it.}
+\textbf{A:}
+\begin{itemize}
+    \item \textbf{Error Encountered:}
+    \begin{itemize}
+        \item \texttt{npm install -g react-native-cli} is deprecated, and the commands provided by the professor did not work.
+        \item Running \texttt{npm run android} failed due to missing Android environment variables.
+        \item The emulator failed to launch and caused build errors.
+    \end{itemize}
+
+    \item \textbf{Cause of the Errors:}
+    \begin{itemize}
+        \item \textbf{Deprecated CLI Installation:} The \texttt{react-native-cli} is no longer supported, and the latest community CLI must be used.
+        \item \textbf{Missing Environment Variables:} The Android development environment was not properly configured (e.g., \texttt{ANDROID\_HOME}, \texttt{PATH} variables missing).
+        \item \textbf{Gradle Build Issues:} Stale caches and leftover build artifacts caused build failures.
+        \item \textbf{Emulator Launch Issues:} The emulator did not launch automatically and required manual intervention.
+    \end{itemize}
+
+    \item \textbf{Steps Taken to Resolve the Errors:}
+    \begin{enumerate}
+        \item Used the updated CLI commands from React Native documentation:
+        \begin{verbatim}
+        npx @react-native-community/cli@latest init todoapp
+        \end{verbatim}
+        \item Configured environment variables:
+        \begin{verbatim}
+        export ANDROID_HOME=/path/to/Android/Sdk
+        export PATH=$PATH:$ANDROID_HOME/emulator
+        export PATH=$PATH:$ANDROID_HOME/platform-tools
+        \end{verbatim}
+        \item Cleaned and rebuilt the project using Gradle:
+        \begin{verbatim}
+        ./gradlew clean
+        ./gradlew assembleDebug --info
+        \end{verbatim}
+        \item Manually started the emulator using Android Studio or terminal commands:
+        \begin{verbatim}
+        emulator -avd YourEmulatorName
+        \end{verbatim}
+        \item Reset the Metro bundler cache to ensure a clean start:
+        \begin{verbatim}
+        npx react-native start --reset-cache
+        \end{verbatim}
+    \end{enumerate}
+\end{itemize}
+
+
+\section*{Task 2}
+
+\subsection*{Q2.1: How did you implement marking tasks as complete?}
+\textbf{A:}
+\begin{itemize}
+    \item Modified task objects to include a \texttt{completed} property:
+    \begin{verbatim}
+    { id: Date.now().toString(), text: task, completed: false }
+    \end{verbatim}
+    \item Created a custom checkbox component.
+    \item Styled completed tasks with strikethrough and grey text using:
+    \begin{verbatim}
+    textDecorationLine: 'line-through', color: 'grey'
+    \end{verbatim}
+\end{itemize}
+
+\subsection*{Q2.2: How did you implement data persistence using AsyncStorage?}
+\textbf{A:}
+\begin{itemize}
+    \item Used \texttt{AsyncStorage} to save tasks whenever the state changed. This was achieved using the \texttt{useEffect} hook to monitor changes in the \texttt{tasks} state:
+    \begin{verbatim}
+    useEffect(() => {
+        saveTasks(tasks);
+    }, [tasks]);
+    \end{verbatim}
+    \item The \texttt{saveTasks} function serialized the tasks to JSON and stored them using \texttt{AsyncStorage.setItem}:
+    \begin{verbatim}
+    try {
+        const jsonValue = JSON.stringify(tasks);
+        await AsyncStorage.setItem('tasks', jsonValue);
+    } catch (e) {
+        console.error("Failed to save tasks.");
+    }
+    \end{verbatim}
+    \item Loaded tasks when the page was first rendered by retrieving them with \texttt{AsyncStorage.getItem}:
+    \begin{verbatim}
+    const loadTasks = async () => {
+        try {
+            const jsonValue = await AsyncStorage.getItem('tasks');
+            setTasks(jsonValue != null ? JSON.parse(jsonValue) : []);
+        } catch (e) {
+            console.error("Failed to load tasks.");
+        }
+    };
+    \end{verbatim}
+    \item Addressed an edge case where no tasks were stored in \texttt{AsyncStorage}. This was handled by checking for \texttt{null} and returning an empty array:
+    \begin{verbatim}
+    const loadTasks = async () => {
+        try {
+            const jsonValue = await AsyncStorage.getItem('tasks');
+            setTasks(jsonValue != null ? JSON.parse(jsonValue) : []);
+        } catch (e) {
+            console.error("Failed to load tasks.");
+        }
+    };
+    \end{verbatim}
+\end{itemize}
+
+
+\subsection*{Q2.3: How did you implement task editing?}
+\textbf{A:}
+\begin{itemize}
+    \item Allowed users to edit a task's content by tapping on it. Only one task can be edited at a time, ensuring clarity and focus during the editing process.
+
+    \item Managed the UI for editing tasks by conditionally rendering a \texttt{TextInput} in place of the task text when a task is in editing mode. The specific task is identified using its \texttt{id}, and the \texttt{editingTaskId} and \texttt{editingText} states are updated accordingly.
+
+    \item Rendered the editing interface using the following component structure:
+    \begin{verbatim}
+    <View style={styles.editContainer}>
+        <TextInput
+            style={styles.input}
+            value={editingText}
+            onChangeText={setEditingText}
+            onBlur={cancelEditTask}  % Cancels editing if clicked outside
+        />
+        <TouchableOpacity onPress={() => confirmEditTask(item.id)}>
+            <Text style={styles.okButton}>OK</Text>  % Confirms changes
+        </TouchableOpacity>
+    </View>
+    \end{verbatim}
+
+    \item Implemented an update function to modify the task in the state array. The function updates the specific task and clears the editing mode:
+    \begin{verbatim}
+    const confirmEditTask = (id) => {
+        setTasks(tasks.map(task =>
+            task.id === id ? { ...task, text: editingText } : task
+        ));
+        setEditingTaskId(null);
+        setEditingText('');
+    };
+    \end{verbatim}
+
+    \item Handled two primary actions:
+    \begin{itemize}
+        \item \textbf{Select:} When a task is tapped, it enters editing mode, and the \texttt{TextInput} is displayed with the task's current text pre-filled.
+        \item \textbf{Unselect:} Clicking outside the \texttt{TextInput} triggers the \texttt{onBlur} event, which discards any changes and exits editing mode.
+    \end{itemize}
+
+    \item Key interactions:
+    \begin{itemize}
+        \item \textbf{OK Button:} Explicitly saves the updated task content and exits editing mode.
+        \item \textbf{Click Outside (Blur):} Cancels the editing and resets the \texttt{editingTaskId} and \texttt{editingText} states.
+    \end{itemize}
+
+    \item This approach ensures that task edits are controlled, changes are only saved when explicitly confirmed by the user, and accidental modifications are prevented.
+\end{itemize}
+
+
+\subsection*{Q2.4: Describe the animations you implemented.}
+\textbf{A:}
+\begin{itemize}
+    \item Used the Animated API to create fade-out effects when deleting tasks:
+    \begin{verbatim}
+    const fadeOut = new Animated.Value(1);
+    Animated.timing(fadeOut, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+    }).start(() => {
+        // Remove task from the list
+    });
+    \end{verbatim}
+    \item \textbf{Key Benefits:}
+    \begin{itemize}
+        \item Smooth transitions.
+        \item Enhanced user experience.
+        \item Reduced cognitive load.
+    \end{itemize}
+\end{itemize}
+
+\section*{Disclosure}
+During the setup and development of the React Native app, I utilized AI tools to assist in troubleshooting and resolving errors. These tools were instrumental in identifying updated commands, configuring environment variables, and addressing issues such as:
+\begin{itemize}
+    \item Resolving deprecated commands for setting up the React Native environment.
+    \item Configuring Android emulator environment variables.
+    \item Debugging Gradle build errors and emulator launch issues.
+    \item Providing guidance on styling components, such as creating a custom checkbox.
+\end{itemize}
+The AI support helped streamline the debugging process and ensured a smoother development experience.
+
+
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.5\textwidth, height=0.3\textheight]{figs/emulator.jpg} % Adjust width and height as needed
+    \caption{App running on an Android emulator.}
+    \label{fig:emulator-screenshot}
+\end{figure}
+
+
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.5\textwidth, height=0.5\textheight]{figs/mobiletodo.jpg} % Adjust width and height as needed
+    \caption{App running on an Android physical device.}
+    \label{fig:mobile-screenshot}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.5\textwidth, height=0.5\textheight]{figs/add.jpg} % 
+    \caption{Add tasks in the app}
+    \label{fig:mobile-screenshot-add}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.5\textwidth, height=0.5\textheight]{figs/1.jpg} % 
+    \caption{completing tasks in the app}
+    \label{fig:mobile-screenshot-complete}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.5\textwidth, height=0.5\textheight]{figs/2.jpg} % 
+    \caption{remove tasks in the app}
+    \label{fig:mobile-screenshot-remove}
+\end{figure}
+
+\end{document}
